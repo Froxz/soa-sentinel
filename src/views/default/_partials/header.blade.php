@@ -15,6 +15,24 @@
 	</a>
 	<div class="navbar-custom-menu">
 		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					@if(Session::has('adminLocale'))
+						<img src="{{asset('packages/sleeping-owl/admin/default/flags/'.Session::get('adminLocale').'.png')}}">
+					@else
+						<img src="{{asset('packages/sleeping-owl/admin/default/flags/'.App::getLocale().'.png')}}">
+					@endif
+				</a>
+				<ul class="dropdown-menu">
+					@foreach(config('admin.availableLocale') as $key => $value)
+						<li>
+							<a href="{{ route('admin.setlocale', $key) }}">
+							<img src="{{asset('packages/sleeping-owl/admin/default/flags/'.$key.'.png')}}">
+							{{ $value }}</a>
+						</li>
+					@endforeach
+				</ul>
+			</li>
 			<li class="dropdown user user-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-user fa-fw"></i>

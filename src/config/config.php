@@ -14,6 +14,15 @@ return [
 	'prefix'                  => 'admin',
 
 	/*
+	 * Locale available
+	 */
+	'availableLocale'         => [
+		'en' => 'English',
+		'de' => 'Deutsch',
+		'ru' => 'Русский'
+	],
+
+	/*
 	 * Middleware to use in admin routes
 	 */
 	'middleware'              => ['admin.auth'],

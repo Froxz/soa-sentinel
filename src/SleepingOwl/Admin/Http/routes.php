@@ -15,6 +15,11 @@ Route::get('assets/lang', [
 	'uses' => 'AdminController@getLang',
 ]);
 
+Route::get('setlocale/{locale}', [
+	'as'   => 'admin.setlocale',
+	'uses' => 'AdminController@setLocale',
+]);
+
 Route::group([
 	'middleware' => config('admin.middleware'),
 ], function ()

@@ -5,6 +5,7 @@ use App;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Session;
 use Input;
 use Redirect;
 use SleepingOwl\Admin\Interfaces\FormInterface;
@@ -148,7 +149,13 @@ class AdminController extends Controller
 
 		return $response;
 	}
-
+	public function setLocale($locale){
+		if (array_key_exists($locale, config('admin.availableLocale'))) {
+		    App::setLocale($locale);
+		    Session::put('adminLocale', $locale);
+		}
+		return back();
+	}
 	public function getWildcard()
 	{
 		abort(404);
